@@ -1,0 +1,42 @@
+{
+  "name": "dbh-bot-api",
+  "version": "0.0.1",
+  "description": "DanBot Hosting's Bots API!",
+  "main": "Index.js",
+  "scripts": {
+    "prettier": "prettier --write .",
+    "start": "node Index",
+    "minify": "node Minify",
+    "build": "npm run prettier && npm run minify && node Build/Index",
+    "start:prod": "node Build/Index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanBot-Hosting/DBH-BOT-API.git"
+  },
+  "keywords": [
+    "danbot",
+    "botapi",
+    "api",
+    "bots",
+    "discord",
+    "hosting",
+    "danbothosting"
+  ],
+  "author": "DottoXD",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanBot-Hosting/DBH-BOT-API/issues"
+  },
+  "homepage": "https://github.com/DanBot-Hosting/DBH-BOT-API#readme",
+  "dependencies": {
+    "@fastify/formbody": "^6.0.0",
+    "@fastify/helmet": "^8.0.0",
+    "@fastify/rate-limit": "^6.0.0",
+    "fastify": "^3.29.0",
+    "terser": "^5.13.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.6.2"
+  }
+}

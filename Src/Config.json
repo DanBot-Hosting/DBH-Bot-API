@@ -1,0 +1,8 @@
+{
+  "Port": 80,
+  "Production": false,
+  "RateLimit": {
+    "Max": 5,
+    "TimeWindow": "1 minute"
+  }
+}
