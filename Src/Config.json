@@ -1,8 +1,12 @@
 {
   "Port": 80,
+  "ServerKey": "verysecureserverkey",
+  "PostgreSQLURL": "",
+  "DiscordAPIToken": "",
   "Production": false,
   "RateLimit": {
     "Max": 5,
     "TimeWindow": "1 minute"
-  }
+  },
+  "WhitelistedIPs": ["127.0.0.1"]
 }

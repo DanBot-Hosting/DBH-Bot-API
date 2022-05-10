@@ -7,6 +7,7 @@
     "prettier": "prettier --write .",
     "start": "node Index",
     "minify": "node Minify",
+    "setup": "node Setup",
     "build": "npm run prettier && npm run minify && node Build/Index",
     "start:prod": "node Build/Index"
   },
@@ -34,7 +35,9 @@
     "@fastify/helmet": "^8.0.0",
     "@fastify/rate-limit": "^6.0.0",
     "fastify": "^3.29.0",
-    "terser": "^5.13.1"
+    "pg": "^8.7.3",
+    "terser": "^5.13.1",
+    "undici": "^5.1.1"
   },
   "devDependencies": {
     "prettier": "^2.6.2"

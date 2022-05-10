@@ -1,6 +1,8 @@
 const Config = require("./Config.json");
 const Fs = require("fs");
 
+let Postgres;
+
 class Actions {
   static async StartWebServer(Fastify) {
     Fastify.listen(
@@ -34,6 +36,17 @@ class Actions {
         Plugin(Fastify);
       }
     });
+  }
+
+  static async PostgreSQLUtils(PG) {
+    Postgres = new PG.Client(Config.PostgreSQLURL);
+    await Postgres.connect().then(() => {
+      console.log("Connected to PostgreSQL!");
+    });
+  }
+
+  static async PostgreSQLQuery(Query, Values) {
+    return await Postgres.query(Query, Values);
   }
 }
 
