@@ -2,7 +2,6 @@ const { PostgreSQLQuery } = require("../DBHBotApi");
 const WhitelistedIPsCheck = require("../Functions/WhitelistedIPsCheck");
 const UserCheck = require("../Functions/UserCheck");
 const GetBot = require("../Functions/GetBot");
-const Crypto = require("crypto");
 
 async function Route(Fastify, Options) {
   Fastify.get("/addbot", async (Request, Reply) => {
