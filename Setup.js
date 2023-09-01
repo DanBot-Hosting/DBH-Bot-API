@@ -10,10 +10,10 @@ if (!PostgreSQLURL) {
   const Postgres = new Client(PostgreSQLURL);
   await Postgres.connect().then(async () => {
     await Postgres.query(
-      "CREATE TABLE IF NOT EXISTS bots (ID SERIAL, DiscordID text, OwnerID text, Name text, Avatar text, Users integer, Guilds integer, Shards integer);"
+      "CREATE TABLE IF NOT EXISTS bots (ID SERIAL, DiscordID text, OwnerID text, Name text, Avatar text, Users integer, Guilds integer, Shards integer);",
     );
     await Postgres.query(
-      "CREATE TABLE IF NOT EXISTS apikeys (ID SERIAL, DiscordID text, Bots text, Key text);"
+      "CREATE TABLE IF NOT EXISTS apikeys (ID SERIAL, DiscordID text, Bots text, Key text);",
     );
     process.exit(0);
   });

@@ -5,15 +5,14 @@
   "main": "Index.js",
   "scripts": {
     "prettier": "prettier --write .",
-    "start": "node Index",
-    "minify": "node Minify",
+    "start": "node Build/Index",
     "setup": "node Setup",
-    "build": "npm run prettier && npm run minify && node Build/Index",
-    "start:prod": "node Build/Index"
+    "build": "tsc",
+    "start:prod": "npm run prettier && npm run build && node Build/Index"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DanBot-Hosting/DBH-BOT-API.git"
+    "url": "git+https://github.com/DanBot-Hosting/DBH-Bot-API.git"
   },
   "keywords": [
     "danbot",
@@ -25,21 +24,23 @@
     "danbothosting"
   ],
   "author": "DottoXD",
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "bugs": {
-    "url": "https://github.com/DanBot-Hosting/DBH-BOT-API/issues"
+    "url": "https://github.com/DanBot-Hosting/DBH-Bot-API/issues"
   },
-  "homepage": "https://github.com/DanBot-Hosting/DBH-BOT-API#readme",
+  "homepage": "https://github.com/DanBot-Hosting/DBH-Bot-API#readme",
   "dependencies": {
-    "@fastify/formbody": "^6.0.0",
-    "@fastify/helmet": "^8.0.0",
-    "@fastify/rate-limit": "^6.0.0",
-    "fastify": "^3.29.0",
-    "pg": "^8.7.3",
-    "terser": "^5.13.1",
-    "undici": "^5.1.1"
+    "@fastify/formbody": "^7.4.0",
+    "@fastify/helmet": "^11.0.0",
+    "@fastify/rate-limit": "^8.0.3",
+    "fastify": "^4.22.0",
+    "pg": "^8.11.3",
+    "typescript": "^5.2.2",
+    "undici": "^5.23.0"
   },
   "devDependencies": {
-    "prettier": "^2.6.2"
+    "@types/node": "^20.5.7",
+    "@types/pg": "^8.10.2",
+    "prettier": "^3.0.2"
   }
 }

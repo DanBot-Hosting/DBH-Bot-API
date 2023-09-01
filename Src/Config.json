@@ -1,5 +1,5 @@
 {
-  "Port": 80,
+  "Port": 3000,
   "ServerKey": "verysecureserverkey",
   "PostgreSQLURL": "",
   "DiscordAPIToken": "",

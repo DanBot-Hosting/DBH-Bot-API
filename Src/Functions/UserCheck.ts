@@ -1,8 +1,8 @@
-const { DiscordAPIToken } = require("../Config.json");
-const Undici = require("undici");
+import { DiscordAPIToken } from "../Config.json";
+import Undici from "undici";
 
-async function UserCheck(ID) {
-  const Data = await Undici.fetch("https://discord.com/api/users/" + ID, {
+export default async function UserCheck(ID: string) {
+  const Data: any = await Undici.fetch("https://discord.com/api/users/" + ID, {
     headers: {
       Authorization: "Bot " + DiscordAPIToken,
     },
@@ -11,5 +11,3 @@ async function UserCheck(ID) {
   if (Data.bot) return false;
   return true;
 }
-
-module.exports = UserCheck;
