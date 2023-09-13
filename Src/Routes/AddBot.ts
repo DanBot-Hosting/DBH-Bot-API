@@ -54,6 +54,16 @@ export default async function Route(Fastify: FastifyInstance) {
       return Reply.status(400).send({
         error: "You are trying to add an already existing bot!",
       });
+    if (
+      !Request.query.avatar.startsWith("https://cdn.discordapp.com/avatars") ||
+      Request.query.name.length > 32 ||
+      Request.query.guilds > 1000000 ||
+      Request.query.users > 10000000 ||
+      Request.query.shards > 10000
+    )
+      return Reply.status(400).send({
+        error: "Invalid bot data!",
+      });
 
     await DBHBotApi.PostgreSQLQuery(
       "INSERT INTO bots (discordid, ownerid, name, avatar, users, guilds, shards) VALUES ($1, $2, $3, $4, $5, $6, $7)",
