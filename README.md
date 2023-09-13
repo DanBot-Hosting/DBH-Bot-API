@@ -1,4 +1,5 @@
 # DanBot Hosting Bots API
+
 Welcome to the official DanBot Hosting Bots API!
 This is the server-side project that allows users to add their own bot into our [Community Server](https://discord.gg/dbh)!
 

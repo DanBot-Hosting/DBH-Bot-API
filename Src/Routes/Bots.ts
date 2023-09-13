@@ -1,9 +1,34 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
+import KeyCheck from "../Functions/KeyCheck";
 import DBHBotApi from "../DBHBotApi";
 import Bot from "../Types/Bot";
 
+type Request = FastifyRequest<{
+  Querystring: {
+    key?: string;
+    discordid?: string;
+    userid?: string;
+    apikey?: string;
+    ownerid?: string;
+    name?: string;
+    avatar?: string;
+    users?: number;
+    guilds?: number;
+    shards?: number;
+  };
+}>;
+
 export default async function Route(Fastify: FastifyInstance) {
-  Fastify.get("/bots", async (Request: FastifyRequest, Reply: FastifyReply) => {
+  Fastify.get("/bots", async (Request: Request, Reply: FastifyReply) => {
+    if (!Request.query.userid || !Request.query.apikey)
+      return Reply.status(400).send({
+        error: "You need to provide a 'userid' and 'apikey' parameter!",
+      });
+    if (!(await KeyCheck(Request.query.userid, Request.query.apikey)))
+      return Reply.status(403).send({
+        error: "Invalid API key!",
+      });
+
     const Bots = await DBHBotApi.PostgreSQLQuery("SELECT * FROM bots");
     if (Bots.rowCount === 0)
       return Reply.status(404).send({
