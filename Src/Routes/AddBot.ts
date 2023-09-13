@@ -22,7 +22,7 @@ type Request = FastifyRequest<{
 }>;
 
 export default async function Route(Fastify: FastifyInstance) {
-  Fastify.get("/addbot", async (Request: Request, Reply: FastifyReply) => {
+  Fastify.post("/addbot", async (Request: Request, Reply: FastifyReply) => {
     if (
       !Request.query.discordid ||
       !Request.query.ownerid ||

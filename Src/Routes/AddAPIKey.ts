@@ -20,7 +20,7 @@ type Request = FastifyRequest<{
 }>;
 
 export default async function Route(Fastify: FastifyInstance) {
-  Fastify.get("/apikey", async (Request: Request, Reply: FastifyReply) => {
+  Fastify.post("/apikey", async (Request: Request, Reply: FastifyReply) => {
     if (!(await RoutePermissions(Request, Reply))) return;
     if (!Request.query.discordid)
       return Reply.status(400).send({ error: "Missing Discord ID!" });
