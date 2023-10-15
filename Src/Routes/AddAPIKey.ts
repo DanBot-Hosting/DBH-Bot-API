@@ -5,17 +5,12 @@ import DBHBotApi from "../DBHBotApi";
 import Crypto from "crypto";
 import BCrypt from "bcrypt";
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
+import WebhookCaller from "../Functions/WebhookCaller";
 
 type Request = FastifyRequest<{
   Querystring: {
     key?: string;
     discordid?: string;
-    ownerid?: string;
-    name?: string;
-    avatar?: string;
-    users?: number;
-    guilds?: number;
-    shards?: number;
   };
 }>;
 
@@ -38,6 +33,11 @@ export default async function Route(Fastify: FastifyInstance) {
       "INSERT INTO apikeys (discordid, key) VALUES ($1, $2)",
       [Request.query.discordid, Hash],
     );
+
+    await WebhookCaller(
+      `A new API key was just added!\n• User: ${Request.query.discordid}.`,
+    );
+
     return Reply.status(201).send({ result: Key });
   });
 }

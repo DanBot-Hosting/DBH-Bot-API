@@ -7,8 +7,8 @@ let Postgres: Client;
 
 export default class DBHBotApi {
   static async StartWebServer(Fastify: FastifyInstance) {
-    this.LoadRoutes(Fastify);
     this.LoadPlugins(Fastify);
+    this.LoadRoutes(Fastify);
 
     Fastify.listen(
       {

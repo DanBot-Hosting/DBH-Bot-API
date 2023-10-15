@@ -8,5 +8,6 @@
     "Max": 5,
     "TimeWindow": "1 minute"
   },
-  "WhitelistedIPs": ["127.0.0.1"]
+  "WhitelistedIPs": ["127.0.0.1"],
+  "WebhookURL": ""
 }

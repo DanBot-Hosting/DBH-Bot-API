@@ -7,7 +7,6 @@ export default async function UserCheck(ID: string): Promise<number> {
       Authorization: "Bot " + DiscordAPIToken,
     },
   }).then((Response) => Response.json());
-  console.log(Data.code === 10013);
   if (Data.code !== null && Data.code === 10013) return 0;
   if (Data.bot) return 2;
   return 1;
