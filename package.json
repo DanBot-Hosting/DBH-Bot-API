@@ -1,6 +1,6 @@
 {
   "name": "dbh-bot-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "DanBot Hosting's Bots API!",
   "main": "Index.js",
   "scripts": {
@@ -31,18 +31,18 @@
   "homepage": "https://github.com/DanBot-Hosting/DBH-Bot-API#readme",
   "dependencies": {
     "@fastify/formbody": "^7.4.0",
-    "@fastify/helmet": "^11.1.0",
+    "@fastify/helmet": "^11.1.1",
     "@fastify/rate-limit": "^8.0.3",
     "bcrypt": "^5.1.1",
-    "fastify": "^4.23.1",
+    "fastify": "^4.24.2",
     "pg": "^8.11.3",
     "typescript": "^5.2.2",
-    "undici": "^5.24.0"
+    "undici": "^5.26.3"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
-    "@types/node": "^20.6.0",
-    "@types/pg": "^8.10.2",
+    "@types/node": "^20.8.6",
+    "@types/pg": "^8.10.5",
     "prettier": "^3.0.3"
   }
 }
