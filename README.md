@@ -44,6 +44,40 @@ Creates a new API key. This endpoint requires an admin API key!
 
 ---
 
+**RemoveAPIKey**
+
+Removes an API key and all the associated data from the API. This endpoint requires an admin API key!
+
+- **URL**
+
+/removeapikey
+
+- **Method:**
+
+`POST`
+
+- **URL Params**
+
+**Required:**
+
+`discordid=[string]`
+
+`key=[string]`
+
+- **Success Response:**
+
+- **Code:** 201 <br  />
+
+**Content:** `{ result: "Key data deleted!" }`
+
+- **Error Response:**
+
+- **Code:** 400/403 <br  />
+
+**Content:** `{ error : [The error] }`
+
+---
+
 **AddBot**
 
 Adds a bot to the API.
