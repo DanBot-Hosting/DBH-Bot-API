@@ -8,206 +8,156 @@ This is the server-side project that allows users to add their own bot into our 
 
 > 🚨 Found a bug? Open a [GitHub Issue](https://github.com/DanBot-Hosting/DBH-BOT-API/issues/new). Found a vulnerability? Open a ticket in our [Discord Server](https://discord.gg/dbh) (Soon enough on a support website!)
 
-# API
+## Documentation
 
-**AddAPIKey**
+- [Endpoints](#documentation)
+  - [AddAPIKey](#post-addapikey)
+  - [RemoveAPIKey](#post-removeapikey)
+  - [AddBot](#post-addbot)
+  - [GetBot](#get-bot)
+  - [GetBots](#get-bots)
 
-Creates a new API key. This endpoint requires an admin API key!
-
-- **URL**
-
-/apikey
-
-- **Method:**
-
-`POST`
-
-- **URL Params**
-
-**Required:**
-
-`discordid=[string]`
-
-`key=[string]`
-
-- **Success Response:**
-
-- **Code:** 201 <br  />
-
-**Content:** `{ result: [Your API Key] }`
-
-- **Error Response:**
-
-- **Code:** 400/403 <br  />
-
-**Content:** `{ error : [The error] }`
 
 ---
 
-**RemoveAPIKey**
+### `ANY` /
 
-Removes an API key and all the associated data from the API. This endpoint requires an admin API key!
+The main index page.
 
-- **URL**
+#### Responses
 
-/removeapikey
-
-- **Method:**
-
-`POST`
-
-- **URL Params**
-
-**Required:**
-
-`discordid=[string]`
-
-`key=[string]`
-
-- **Success Response:**
-
-- **Code:** 201 <br  />
-
-**Content:** `{ result: "Key data deleted!" }`
-
-- **Error Response:**
-
-- **Code:** 400/403 <br  />
-
-**Content:** `{ error : [The error] }`
+- `200` - Successfully connected to the API.
+    - Content-Type: `application/json`
+    - Body: `{ message: "Welcome to DBH's Bot API!" }`
 
 ---
 
-**AddBot**
+### `POST` /addapikey
 
-Adds a bot to the API.
+Creates a new API key.
 
-- **URL**
+#### URL Params
 
-/addbot
+> ❗ **All URL params are required.**
 
-- **Method:**
+- `discordid` [string] - The bot's Discord ID
+- `key` [string] - The admin API key, **only select people have this**.
 
-`POST`
+#### Responses
 
-- **URL Params**
+- `201` - Successfully created a new API key.
+    - Content-Type: `application/json`
+    - Body: `{ result: [Your API Key] }`
 
-**Required:**
-
-`discordid=[string]`
-
-`ownerid=[string]`
-
-`apikey=[string]`
-
-`name=[string]`
-
-`avatar=[string]`
-
-`users=[integer]`
-
-`guilds=[integer]`
-
-`shards=[integer]`
-
-- **Success Response:**
-
-- **Code:** 201 <br  />
-
-**Content:** `{ result: "Success!" }`
-
-- **Error Response:**
-
-- **Code:** 400/403 <br  />
-
-**Content:** `{ error : [The error] }`
+- `400/403` - Bad request. You're missing a URL param or something else went wrong.
+    - Content-Type: `application/json`
+    - Body: `{ error: [The error] }`
 
 ---
 
-**Bot**
+### `POST` /removeapikey
 
-Gets a bot on the API.
+Removes an API key. 
 
-- **URL**
+> ⚠️ **All associated data with the API key will be removed. Be careful removing a key.**
 
-/bot
+> ❗ **All URL params are required.**
 
-- **Method:**
+#### URL Params
 
-`GET`
+- `discordid` [string] - The bot's Discord ID
+- `key` [string] - The admin API key, **only select people have this**.
 
-- **URL Params**
+#### Responses
 
-**Required:**
+- `201` - Successfully removed the API key.
+    - Content-Type: `application/json`
+    - Body: `{ result: "Key data deleted!" }`
 
-`discordid=[string]`
-
-`userid=[string]`
-
-`apikey=[string]`
-
-- **Success Response:**
-
-- **Code:** 200 <br  />
-
-**Content:** `{ result: [The bot] }`
-
-- **Error Response:**
-
-- **Code:** 400/403 <br  />
-
-**Content:** `{ error : [The error] }`
+- `400/403` - Bad request. You're missing a URL param or something else went wrong.
+    - Content-Type: `application/json`
+    - Body: `{ error: [The error] }`
 
 ---
 
-**Bots**
+### `POST` /addbot
 
-Gets all bots on the API.
+Adds a bot to the API/database.
 
-- **URL**
+> ❗ **All URL params are required.**
 
-/bots
+> ⚠️ **Needs to be sent from a DBH node.**
 
-- **Method:**
+#### URL Params
 
-`GET`
+- `discordid` [string] - The bot's Discord ID
+- `ownerid` [string] - The owner's Discord ID
+- `apikey` [string] - The admin API key, **only select people have this**.
+- `name` [string] - The bot's name
+- `avatar` [string] - The bot's avatar URL
+- `users` [integer] - The bot's user count
+- `guilds` [integer] - The bot's guild count
+- `shards` [integer] - The bot's shard count
 
-- **URL Params**
+#### Responses
 
-**Required:**
+- `201` - Successfully added the bot.
+    - Content-Type: `application/json`
+    - Body: `{ result: "Success!" }`
 
-`userid=[string]`
-
-`apikey=[string]`
-
-- **Success Response:**
-
-- **Code:** 200 <br  />
-
-**Content:** `{ result: [All the bots] }`
-
-- **Error Response:**
-
-- **Code:** 400/403 <br  />
-
-**Content:** `{ error : [The error] }`
+- `400/403` - Bad request. You're missing a URL param or something else went wrong.
+    - Content-Type: `application/json`
+    - Body: `{ error: [The error] }`
 
 ---
 
-**Index**
+### `GET` /bot
 
-Just the API's index.
+Get a bot's data.
 
-- **URL**
+> ❗ **All URL params are required.**
 
-/
+#### URL Params
 
-- **Method:**
+- `discordid` [string] - The bot's Discord ID
+- `userid` [string] - The Discord bot's owner's ID
+- `apikey` [string] - The admin API key, **only select people have this**.
 
-`GET`
+#### Responses
 
-- **Success Response:**
+- `200` - Successfully got the bot's data.
+    - Content-Type: `application/json`
+    - Body: `{ result: { [The bot's data] } }`
 
-- **Code:** 200 <br  />
+- `400/403` - Bad request. You're missing a URL param or something else went wrong.
+    - Content-Type: `application/json`
+    - Body: `{ error: [The error] }`
 
-**Content:** `{ message: "Welcome to DBH's Bot API!" }`
+---
+
+### `GET` /bots
+
+Get all bot's data.
+
+> ❗ **All URL params are required.**
+
+#### URL Params
+
+- `discordid` [string] - The bot's Discord ID
+- `userid` [string] - The Discord bot's owner's ID
+- `apikey` [string] - The admin API key, **only select people have this**.
+
+#### Responses
+
+- `200` - Successfully got all bots' data.
+    - Content-Type: `application/json`
+    - Body: `{ result: { [All bot's data] } }`
+
+- `400/403` - Bad request. You're missing a URL param or something else went wrong.
+    - Content-Type: `application/json`
+    - Body: `{ error: [The error] }`
+
+---
+
+# DanBot
+> Made with ❤️ by [DanBot Hosting](https://danbot.host).
