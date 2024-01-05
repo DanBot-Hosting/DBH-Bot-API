@@ -4,9 +4,11 @@ Welcome to the official DanBot Hosting Bots API!
 
 This is the server-side project that allows users to add their own bot into our [Community Server](https://discord.gg/dbh)!
 
-> ⚠️ This project is still in a testing stage. It should be good enough for production, but bugs may occur.
+> [!WARNING]
+> This project is still in a testing stage. It should be good enough for production, but bugs may occur.
 
-> 🚨 Found a bug? Open a [GitHub Issue](https://github.com/DanBot-Hosting/DBH-BOT-API/issues/new). Found a vulnerability? Open a ticket in our [Discord Server](https://discord.gg/dbh) (Soon enough on a support website!)
+> [!NOTE]
+> Found a bug? Open a [GitHub Issue](https://github.com/DanBot-Hosting/DBH-BOT-API/issues/new). Found a vulnerability? Open a ticket in our [Discord Server](https://discord.gg/dbh) (Soon enough on a support website!)
 
 ## Documentation
 
@@ -36,9 +38,10 @@ The main index page.
 
 Creates a new API key.
 
-#### URL Params
+> [!IMPORTANT]
+> **All URL params are required.**
 
-> ❗ **All URL params are required.**
+#### URL Params
 
 - `discordid` [string] - The bot's Discord ID
 - `key` [string] - The admin API key, **only select people have this**.
@@ -59,9 +62,11 @@ Creates a new API key.
 
 Removes an API key. 
 
-> ⚠️ **All associated data with the API key will be removed. Be careful removing a key.**
+> [!CAUTION]
+> **All associated data with the API key will be removed. Be careful removing a key.**
 
-> ❗ **All URL params are required.**
+> [!IMPORTANT]
+> **All URL params are required.**
 
 #### URL Params
 
@@ -84,9 +89,11 @@ Removes an API key.
 
 Adds a bot to the API/database.
 
-> ❗ **All URL params are required.**
+> [!IMPORTANT]
+> **All URL params are required.**
 
-> ⚠️ **Needs to be sent from a DBH node.**
+> [!NOTE]
+> **Needs to be sent from a DBH node.**
 
 #### URL Params
 
@@ -115,7 +122,8 @@ Adds a bot to the API/database.
 
 Get a bot's data.
 
-> ❗ **All URL params are required.**
+> [!IMPORTANT]
+> **All URL params are required.**
 
 #### URL Params
 
@@ -139,7 +147,8 @@ Get a bot's data.
 
 Get all bot's data.
 
-> ❗ **All URL params are required.**
+> [!IMPORTANT]
+> **All URL params are required.**
 
 #### URL Params
 
