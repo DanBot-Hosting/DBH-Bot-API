@@ -7,9 +7,6 @@ This is the server-side project that allows users to add their own bot into our 
 > [!WARNING]
 > This project is still in a testing stage. It should be good enough for production, but bugs may occur.
 
-> [!NOTE]
-> Found a bug? Open a [GitHub Issue](https://github.com/DanBot-Hosting/DBH-BOT-API/issues/new). Found a vulnerability? Open a ticket in our [Discord Server](https://discord.gg/dbh) (Soon enough on a support website!)
-
 ## Documentation
 
 - [Endpoints](#documentation)
@@ -169,4 +166,8 @@ Get all bot's data.
 ---
 
 # DanBot
+
+> [!NOTE]
+> Found a bug? Open a [GitHub Issue](https://github.com/DanBot-Hosting/DBH-BOT-API/issues/new). Found a vulnerability? Open a ticket in our [Discord Server](https://discord.gg/dbh) (Soon enough on a support website!)
+
 > Made with ❤️ by [DanBot Hosting](https://danbot.host).
