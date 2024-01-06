@@ -11,7 +11,7 @@ type Request = FastifyRequest<{
   Querystring: {
     key?: string;
     discordid?: string;
-    ownerid?: string;
+    userid?: string;
     apikey?: string;
     name?: string;
     avatar?: string;
@@ -25,7 +25,7 @@ export default async function Route(Fastify: FastifyInstance) {
   Fastify.post("/addbot", async (Request: Request, Reply: FastifyReply) => {
     if (
       !Request.query.discordid ||
-      !Request.query.ownerid ||
+      !Request.query.userid ||
       !Request.query.apikey ||
       !Request.query.name ||
       !Request.query.avatar ||
@@ -36,7 +36,7 @@ export default async function Route(Fastify: FastifyInstance) {
       return Reply.status(400).send({
         error: "You are missing one of the necessary queries to add your bot!",
       });
-    if (!(await KeyCheck(Request.query.ownerid, Request.query.apikey)))
+    if (!(await KeyCheck(Request.query.userid, Request.query.apikey)))
       return Reply.status(403).send({
         error: "Invalid API key!",
       });
@@ -66,10 +66,10 @@ export default async function Route(Fastify: FastifyInstance) {
       });
 
     await DBHBotApi.PostgreSQLQuery(
-      "INSERT INTO bots (discordid, ownerid, name, avatar, users, guilds, shards) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+      "INSERT INTO bots (discordid, userid, name, avatar, users, guilds, shards) VALUES ($1, $2, $3, $4, $5, $6, $7)",
       [
         Request.query.discordid,
-        Request.query.ownerid,
+        Request.query.userid,
         Request.query.name,
         Request.query.avatar,
         Request.query.users,
@@ -80,8 +80,8 @@ export default async function Route(Fastify: FastifyInstance) {
 
     const UserBots: Bot[] = [];
     const Bots = await DBHBotApi.PostgreSQLQuery(
-      "SELECT * FROM bots WHERE ownerid = $1",
-      [Request.query.ownerid],
+      "SELECT * FROM bots WHERE userid = $1",
+      [Request.query.userid],
     );
     Bots.rows.forEach((Bot: Bot) => {
       if (!Bot.discordid) return;
@@ -90,11 +90,11 @@ export default async function Route(Fastify: FastifyInstance) {
 
     await DBHBotApi.PostgreSQLQuery(
       "UPDATE apikeys SET bots = $1 WHERE discordid = $2",
-      [JSON.stringify(UserBots), Request.query.ownerid],
+      [JSON.stringify(UserBots), Request.query.userid],
     );
 
     await WebhookCaller(
-      `A new bot was just added to the API!\n• Owner: ${Request.query.ownerid}.\n• Bot ID/name: ${Request.query.discordid}/${Request.query.name}.\n• Bot users/guilds/shards: ${Request.query.users}/${Request.query.guilds}/${Request.query.shards}.\n• Invite: [Click here](https://discord.com/oauth2/authorize?client_id=${Request.query.discordid}&scope=bot&permissions=0).`,
+      `A new bot was just added to the API!\n• Owner: ${Request.query.userid}.\n• Bot ID/name: ${Request.query.discordid}/${Request.query.name}.\n• Bot users/guilds/shards: ${Request.query.users}/${Request.query.guilds}/${Request.query.shards}.\n• Invite: [Click here](https://discord.com/oauth2/authorize?client_id=${Request.query.discordid}&scope=bot&permissions=0).`,
     );
 
     return Reply.status(201).send({ result: "Success!" });
