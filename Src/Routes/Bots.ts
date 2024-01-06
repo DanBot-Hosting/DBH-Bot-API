@@ -9,7 +9,6 @@ type Request = FastifyRequest<{
     discordid?: string;
     userid?: string;
     apikey?: string;
-    ownerid?: string;
     name?: string;
     avatar?: string;
     users?: number;
