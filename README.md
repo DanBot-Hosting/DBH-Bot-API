@@ -96,7 +96,7 @@ Adds a bot to the API/database.
 
 - `discordid` [string] - The bot's Discord ID
 - `ownerid` [string] - The owner's Discord ID
-- `apikey` [string] - The admin API key, **only select people have this**.
+- `apikey` [string] - The API key you received from running `/generate-bot-api-key`.
 - `name` [string] - The bot's name
 - `avatar` [string] - The bot's avatar URL
 - `users` [integer] - The bot's user count
@@ -126,7 +126,7 @@ Get a bot's data.
 
 - `discordid` [string] - The bot's Discord ID
 - `userid` [string] - The Discord bot's owner's ID
-- `apikey` [string] - The admin API key, **only select people have this**.
+- `apikey` [string] -The API key you received from running `/generate-bot-api-key`.
 
 #### Responses
 
@@ -151,7 +151,7 @@ Get all bot's data.
 
 - `discordid` [string] - The bot's Discord ID
 - `userid` [string] - The Discord bot's owner's ID
-- `apikey` [string] - The admin API key, **only select people have this**.
+- `apikey` [string] - The API key you received from running `/generate-bot-api-key`.
 
 #### Responses
 
