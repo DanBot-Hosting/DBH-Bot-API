@@ -94,7 +94,7 @@ export default async function Route(Fastify: FastifyInstance) {
     );
 
     await WebhookCaller(
-      `A new bot was just added to the API!\n• Owner: ${Request.query.ownerid}.\n• Bot ID/name: ${Request.query.discordid}/${Request.query.name}.\n• Bot users/guilds/shards: ${Request.query.users}/${Request.query.guilds}/${Request.query.shards}.\n• Invite: [Click here](https://discord.com/oauth2/authorize?client_id=${Request.query.discordid}&scope=bot&permissions=0).`,
+      `A new bot was just added to the API!\n• Owner: ${Request.query.ownerid} (<@${Request.query.ownerid}>).\n• Bot ID/name: ${Request.query.discordid}/${Request.query.name}.\n• Bot users/guilds/shards: ${Request.query.users}/${Request.query.guilds}/${Request.query.shards}.\n• Invite: [Click here](https://discord.com/oauth2/authorize?client_id=${Request.query.discordid}&scope=bot&permissions=0).`,
     );
 
     return Reply.status(201).send({ result: "Success!" });
